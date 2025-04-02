@@ -104,7 +104,7 @@ bash scripts/train/train_clutter_gp_unified.sh
 ```
 - Adaptation for place
 ```
-bash scripts/train/train_clutter_clip_gp_adaptive.sh
+bash scripts/train/train_clutter_gp_adaptive.sh
 ```
 
 
