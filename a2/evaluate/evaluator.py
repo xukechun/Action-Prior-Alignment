@@ -9,9 +9,13 @@ import open3d as o3d
 import matplotlib.pyplot as plt
 
 import utils.utils as utils
-from env.constants import WORKSPACE_LIMITS
+from env.constants import WORKSPACE_LIMITS, GRASP_WORKSPACE_LIMITS, PLACE_WORKSPACE_LIMITS, PP_WORKSPACE_LIMITS, PP_PIXEL_SIZE, WORKSPACE_LIMITS, PP_SHIFT_Y
 from helpers.logger import Logger
 from feature_extractor.feature_field_builder import FeatureField
+from action_generator.grasp_detetor import Graspnet
+from action_generator.place_generator import Placenet
+from models.bc_agent import ViLGP3D, AdaptViLGP3D, LangEmbViLGP3D
+from models.clip_agent import CLIPGrasp, CLIPPlace
 
 class BaseEvaluator:
     def __init__(self, args):
@@ -96,10 +100,6 @@ class PickEvaluator(BaseEvaluator):
         super().__init__(args)
         
     def init_networks(self):
-        from action_generator.grasp_detetor import Graspnet
-        from models.bc_agent import ViLGP3D, AdaptViLGP3D, LangEmbViLGP3D
-        from models.clip_agent import CLIPGrasp
-        
         self.graspnet = Graspnet()
         
         if self.args.direct_grounding:
@@ -312,11 +312,7 @@ class PlaceEvaluator(BaseEvaluator):
     def __init__(self, args):
         super().__init__(args)
         
-    def init_networks(self):
-        from action_generator.place_generator import Placenet
-        from models.bc_agent import ViLGP3D, AdaptViLGP3D, LangEmbViLGP3D
-        from models.clip_agent import CLIPPlace
-        
+    def init_networks(self):        
         self.placenet = Placenet()
         
         if self.args.direct_grounding:
@@ -571,11 +567,6 @@ class PickPlaceEvaluator(BaseEvaluator):
         super().__init__(args)
         
     def init_networks(self):
-        from action_generator.grasp_detetor import Graspnet
-        from action_generator.place_generator import Placenet
-        from models.bc_agent import ViLGP3D, AdaptViLGP3D, LangEmbViLGP3D
-        from models.clip_agent import CLIPGrasp, CLIPPlace
-        
         self.graspnet = Graspnet()
         self.placenet = Placenet()
         
@@ -615,8 +606,6 @@ class PickPlaceEvaluator(BaseEvaluator):
         )
         
     def process_episode(self, episode, file_path):
-        from env.constants import GRASP_WORKSPACE_LIMITS, PLACE_WORKSPACE_LIMITS, PP_WORKSPACE_LIMITS, PP_PIXEL_SIZE, WORKSPACE_LIMITS, PP_SHIFT_Y
-
         episode_reward = 0
         episode_steps = 0
         reset = False
@@ -832,7 +821,6 @@ class PickPlaceEvaluator(BaseEvaluator):
                         target_obj_size = bbox_sizes[i]
                         
                 # placenet, generate all feasible places                 
-                # !!! VERY IMPORTANT !!!
                 all_place_valid_mask = utils.generate_all_place_dist(
                     self.env.reference_obj_ids[0], 
                     self.env.obj_labels[self.env.reference_obj_ids[0]][0], 
