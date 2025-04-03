@@ -1,4 +1,4 @@
-# Action Prior Alignment
+# Efficient Alignment of Unconditioned Action Prior for Language-conditioned Pick and Place in Clutter
 This is the official repository for the paper: Efficient Alignment of Unconditioned Action Prior for Language-conditioned Pick and Place in Clutter.
 
 [Paper](https://arxiv.org/abs/2503.09423) | [Video](https://www.bilibili.com/video/BV1dPX4YzEzk/?spm_id_from=333.1391.0.0)
