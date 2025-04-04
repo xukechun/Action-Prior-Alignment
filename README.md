@@ -80,7 +80,7 @@ python setup.py install
 We provide the processed object models in this [link](https://drive.google.com/drive/folders/1WxKDFXJktoqiP0jmkDZrMCcNNBx5u-YM?usp=drive_link). Please download the file and unzip it in the `assets` folder.
 
 ### Data and Pre-trained Models
-We provide our training data in this [link](). Please download the file and unzip it in the `data` folder. 
+We provide our training data in this [link](https://huggingface.co/datasets/KechunXu1/A2_Dataset). Please download the file and unzip it in the `data` folder. 
 
 We provide our testing cases in this [link](https://drive.google.com/drive/folders/1OuTua-69NEeV7RYIi9nzR1jmdZEugB68?usp=sharing). Please download the file and unzip it in the `testing_cases` folder. 
 
