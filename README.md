@@ -58,7 +58,7 @@ solution: to install torch with the right cuda version
 
 ###  Easy Installation
 
-If you use conda, we provide our conda environment produced by ```conda-pack``` in this [link](https://drive.google.com/file/d/15y6PMeZdyIiSAmMOYTCEabAmZlr94mcQ/view?usp=sharing). NOTE: This environment is compatiable with CUDA 11.3.
+If you use conda, we provide our conda environment produced by ```conda-pack``` in this [link](https://drive.google.com/file/d/1j56LA832AjO1zD_liXl0MtVJAGMaQ7Ff/view?usp=sharing). NOTE: This environment is compatiable with CUDA 11.3.
 
 Then you can easily build and activate the conda environment by
 ```
